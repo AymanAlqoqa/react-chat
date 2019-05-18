@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./server/src/index.js"
+    "client": "npm start --prefix client",
+    "server": "nodemon ./server/src/index.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "kill": "fuser -k 5000/tcp & fuser -k 3000/tcp"
   },
   "repository": {
     "type": "git",
@@ -20,5 +23,9 @@
   "dependencies": {
     "cookie-parser": "^1.4.4",
     "express": "^4.17.0"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.19.0"
   }
 }
