@@ -4,10 +4,14 @@ import socketIO from 'socket.io-client';
 class Chat extends React.Component {
   state = {};
   componentDidMount() {
-    const socket = socketIO('http://localhost:5000');
+    this.socket = socketIO('http://localhost:8080');
   }
   render() {
-    return <div>Chat</div>;
+    return (
+      <button onClick={() => this.socket.emit('sayhello', 'hellooooo!')}>
+        Click me
+      </button>
+    );
   }
 }
 
